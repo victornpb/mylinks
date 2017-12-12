@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/underscore"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <div class="task-generator">
+        <h1>Auditoria de Dados</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="progress-status-table">
+    
+                    <table class="footable table table-stripped default footable-loaded" data-page-size="8" data-filter="#filter">
+    
+                        <thead>
+                            <tr>
+    
+                            </tr>
+                        </thead>
+    
+                        <tbody>
+    
+                            <tr>
+    
+                                <td>
+                                    <div class="table-cell-text-detail">
+                                        <div class="text" title="" data-original-title="">
+    
+                                            Progresso da Equipe
+    
+                                        </div>
+                                        <div class="detail"></div>
+                                    </div>
+                                </td>
+    
+                                <td>
+    
+    
+                                    <div class="progress table-cell-progress progress-striped " title="" data-original-title="">
+                                        <div class="progress-bar progress-bar-success" style="width: 14.923656807001853%; ;" aria-valuemin="0" aria-valuemax="100"
+                                            aria-valuenow="15" role="progressbar">
+                                            <span class="toothin">14.92
+                                                <small>%</small>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+    
+                                <td>
+                                    <div class="table-cell-text-detail">
+                                        <div class="text" title="" data-original-title="">
+    
+                                            2336/15653
+    
+                                        </div>
+                                        <div class="detail"></div>
+                                    </div>
+                                </td>
+    
+                            </tr>
+    
+                            <tr>
+    
+                                <td>
+                                    <div class="table-cell-text-detail">
+                                        <div class="text" title="" data-original-title="">
+    
+                                            Seu progresso semanal
+    
+                                        </div>
+                                        <div class="detail"></div>
+                                    </div>
+                                </td>
+    
+                                <td>
+    
+    
+                                    <div class="progress table-cell-progress progress-striped " title="" data-original-title="">
+                                        <div class="progress-bar progress-bar-primary" style="width: 8.097928436911488%; ;" aria-valuemin="0" aria-valuemax="100"
+                                            aria-valuenow="8" role="progressbar">
+                                            <span class="toothin">8.10
+                                                <small>%</small>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+    
+                                <td>
+                                    <div class="table-cell-text-detail">
+                                        <div class="text" title="" data-original-title="">
+    
+                                            43/531
+    
+                                        </div>
+                                        <div class="detail"></div>
+                                    </div>
+                                </td>
+    
+                            </tr>
+    
+                        </tbody>
+    
+                    </table>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <center>
+
+        <button id="start" class="btn btn-primary btn-lg" style="width: 200px;">Iniciar tasks</button>
+    </center>
+
+
+
+    <script>
+        var popup;
+        start.onclick = function () {
+
+
+            popup = new Popup('popup.html','audit', {
+                minimizable: false,
+                status: false,
+                personalbar: false,
+                location: false,
+                toolbar: false,
+                menubar: false,
+                alwaysRaised: true,
+                scrollbars: true,
+                resizable: true,
+                left: false,
+                top: false,
+                height: (window.screen.availHeight || window.screen.height),
+                width: (window.screen.availWidth || window.screen.width) / 3,
+            });
+
+            if (popup.window) {
+                console.log(popup);
+            } else {
+                alert('disable popup blocker');
+            }
+
+            // popup.window.document.write(
+            //     `
+            //     <button id="opensite">Open Website</button>
+            //     <button id="closesite">Close Website</button>
+            //     `
+            // );
+
+            // popup.window.opensite.onclick = function () {
+
+            //     var site = new Popup('popup.html', 'site', {
+            //         minimizable: false,
+            //         status: false,
+            //         personalbar: false,
+            //         location: false,
+            //         toolbar: false,
+            //         menubar: false,
+            //         alwaysRaised: true,
+            //         scrollbars: true,
+            //         resizable: true,
+            //         left: (window.screen.availWidth || window.screen.width) / 4,
+            //         top: false,
+            //         height: (window.screen.availHeight || window.screen.height),
+            //         width: (window.screen.availWidth || window.screen.width) / 4 * 3
+            //     });
+
+            //     popup.window.closesite.onclick = function(){
+            //         site.window.close();
+            //     }
+            // };
+
+
+
+
+
+        };
+
+
+
+        function Popup(url, strWindowName, options) {
+            var params = [];
+            for (p in options) {
+                var val = options[p];
+                if (typeof val === 'boolean') {
+                    val = val ? 1 : 0;
+                }
+                params.push(p + '=' + val);
+            }
+            var strWindowFeatures = params.join(',');
+            var popup = window.open(url, strWindowName, strWindowFeatures);
+            this.window = popup;
+        }
+    </script>
+</body>
+
+</html>

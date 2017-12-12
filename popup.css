@@ -1,0 +1,156 @@
+body {
+    background: white;
+}
+
+.task {
+    font-size: 9pt;
+    border-bottom: 1px solid #999;
+    margin-bottom: 5px;
+    background: #0c3c53;
+    color: white;
+    padding: 0px;
+}
+
+.task-info {
+        background: #31708f;
+        display: flex;
+        color: white;
+        padding: 2px;
+}
+
+.task-name {
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.task-time {
+    font-size: 11px;
+}
+
+.market-info {}
+
+.market-info .market-name {
+    font-weight: bold;
+}
+
+.market-info .product-link {}
+
+.processed-info {
+
+}
+.processed-info .header{
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.processed-info .header .h{
+    font-weight: bold;
+    flex-grow: 1;
+}
+.processed-info .header .id{
+
+}
+
+
+
+
+.lettproduct-info {}
+
+.lettproduct-info .header {
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.lettproduct-info .header .h {
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.lettproduct-info .header .id {}
+
+
+.audit-items{
+    padding: 1px;
+}
+
+.audit-item {
+    position: relative;
+    -display: flex;
+    margin-right: 100px;
+    margin-bottom: 5px;
+    min-height: 44px;
+    border: 1px solid #666;
+    background: white;
+}
+
+.audit-attr {
+    font-weight: bold;
+}
+
+.audit-value {
+    font-family: monospace;
+}
+
+.audit-action {
+    position: absolute;
+    left: 100%;
+    width: 95px;
+    margin-left: 5px;
+    top: 50%;
+    margin-top: -22px;
+}
+
+.audit-action button {
+    width: 44px;
+    height: 44px;
+}
+
+
+
+[name=bad]{
+    color: red;
+}
+[name=ok]{
+    color: green;
+}
+
+.pay {}
+
+.pay>div:last-child {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.pay li {
+    white-space: nowrap;
+    list-style: none;
+    margin-left: 1em;
+}
+
+button.end {
+    display: block;
+    text-align: center;
+    font-size: 12pt;
+    height: 44px;
+    width: 100%;
+}
+
+input[type=radio] {
+    /* display: none; */
+}
+
+
+.audit-item.ok{
+    background: rgb(97, 232, 97);
+}
+.audit-item.ok .audit-value{
+    opacity: 0.5;
+}
+.audit-item.nope{
+    background: rgb(219, 66, 66);
+}
+            .audit-item.nope .audit-value{
+                opacity: 0.5;
+            }

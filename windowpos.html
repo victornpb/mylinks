@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        samp{
+            color: blue;
+            font-size: 12pt;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        setInterval(function(){
+            document.body.innerHTML = `
+             screenX: ${screenX}
+             screenY: ${screenY}
+
+             screenLeft: ${screenLeft}
+             screenTop: ${screenTop}
+             
+             screen.availLeft: ${screen.availLeft}
+             screen.availTop: ${screen.availTop}
+             
+             screen.availWidth: ${screen.availWidth}
+             screen.availHeight: ${screen.availHeight}
+             
+             screen.width: ${screen.width}
+             screen.height: ${screen.height}
+
+
+            screenLeft - screen.availLeft: ${screenLeft - screen.availLeft}
+            screenTop - screen.availTop: ${screenTop - screen.availTop}
+            `.replace(/\n/g, '<br>').replace(/(\d+)/g, '<samp>$1</samp>');
+        },100);    
+    </script>
+</body>
+</html>

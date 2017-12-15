@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,11 @@
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/underscore"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
 </head>
+
 <body>
-    
+
     <div>
         <div id="allowPopups" class="alert alert-warning" style="display:none;">
             Please allow pop-ups!
@@ -21,15 +23,23 @@
     </div>
 
     <div>
-        <textarea id="inputUrls" cols="80" rows="4"></textarea>
+        <textarea id="inputUrls" cols="80" rows="4">
+http://google.com
+http://yahoo.com
+http://bing.com
+        </textarea>
         <button id="loadBtn">Load Links</button>
     </div>
 
     <div id="viewer">
         <div>Loaded Links</div>
-        <div>Name: <input v-model="name"></div>
-        <div>Notes: <textarea v-model="notes"></textarea></div>
-        <div>Links: {{items.length}}</div>
+        <div>Name:
+            <input v-model="name">
+        </div>
+        <div>Notes:
+            <textarea v-model="note"></textarea>
+        </div>
+        
         <table border="1">
             <thead>
                 <tr>
@@ -40,57 +50,65 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(item, i) in items" v-bind:key="i">
+                <tr v-for="(item, i) in urls" v-bind:key="i">
                     <td>{{i+1}}</td>
                     <td>
-                        <span v-if="item.meta===-1">❌</span>
                         <span v-if="item.meta===0">➖</span>
                         <span v-if="item.meta===1">✅</span>
+                        <span v-if="item.meta===2">❌</span>
                     </td>
                     <td>{{item.url}}</td>
-<td>
-    <button v-on:click="remove(item)">🗑️</button>
-</td>
+                    <td>
+                        <button v-on:click="remove(item)">🗑️</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
+
+        <table border="1">
+            <tr>
+                <td>Links</td>
+                <td>{{urls.length}}</td>
+            </tr>
+        </table>
     </div>
-    
-  
+
+
 
     <!-- popup dom -->
-    <div id="popupcontent" style="display:;">
+    <div id="popupcontent" style="display:none;">
         <table style="width: 100%; height: 100%;">
             <tbody>
                 <tr height="0">
                     <td colspan="" class="center">
-                        <div id="counterDiv">{{current+1}} / {{items.length}}</div>
+                        <div id="counterDiv">{{index+1}} / {{urls.length}}</div>
                     </td>
                     <td>
                         <button id="prevBtn" v-on:click="prev">⬅️ PREV</button>
                         <button id="nextBtn" v-on:click="next">NEXT ➡️</button>
                     </td>
-                <td>
-                    
-                <tr height="0">
-                    <td colspan="2">
-                        <input type="text" id="currUrlInput" size="100" style="width:100%;" v-bind:value="items[current].url">
-                    </td>
                     <td colspan="0">
-                        <button v-on:click="flag(-1)">❌</button>
                         <button v-on:click="flag(0)">➖ </button>
                         <button v-on:click="flag(1)">✅</button>
+                        <button v-on:click="flag(2)">❌</button>
                     </td>
                 </tr>
-                
+
+                <tr height="0">
+                    <td colspan="3">
+                        <input type="text" id="currUrlInput" size="100" style="width:100%;" v-bind:value="urls[index].url" readonly>
+                    </td>
+                </tr>
+
                 <tr>
                     <td colspan="3">
-                        <select id="urlsSelect" size="10" style="width:100%; height: 100%;" v-on:change="selectChange" v-on:click="selectClick" v-bind:value="current">
-                            <option v-for="(item, i) in items" v-bind:value="i" v-bind:title="item.url">
-                                <template v-if="item.meta===-1">❌</template>
+                        <select id="urlsSelect" size="10" style="width:100%; height: 100%;" v-on:change="selectChange" v-on:click="selectClick" v-bind:value="index">
+                            <option v-for="(item, i) in urls" v-bind:value="i" v-bind:title="item.url">
+                                {{i}}
+                                
                                 <template v-if="item.meta===0">➖</template>
                                 <template v-if="item.meta===1">✅</template>
-                                |
+                                <template v-if="item.meta===2">❌</template>
                                 {{item.url}}
                             </option>
                         </select>
